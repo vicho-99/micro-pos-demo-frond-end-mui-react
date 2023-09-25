@@ -32,8 +32,8 @@ const theme = createTheme({
         {
           props: { variant: 'contained', color: 'primary' },
           style: {
-           
-            borderRadius: 10
+            borderRadius: 10,
+            background: '#1976d2',
           },
         },
 

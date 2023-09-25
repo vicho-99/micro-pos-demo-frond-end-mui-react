@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
 import Drawer from '@/components/Drawer';
@@ -7,6 +6,7 @@ import { ProductProvider } from '@/context/product';
 import { Toaster } from 'sonner'
 import Loading from '@/components/Loading'
 import { LoadingProvider } from '@/context/loading';
+import { ModalProvider } from '@/context/modal';
 
 export const metadata = {
   title: 'Point of sale ',
@@ -15,23 +15,24 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" style={{ height: '100%' }} >
+      <body style={{ height: '100%' }} >
         <Toaster richColors />
         <LoadingProvider>
+          <ModalProvider>
+            <ProductProvider>
+              <ThemeRegistry>
+                <Loading />
+                <Drawer />
+                <Box
+                  component="main"
+                  sx={styles.layoutBox}>
+                  {children}
+                </Box>
 
-          <ProductProvider>
-            <ThemeRegistry>
-              <Loading />
-              <Drawer />
-              <Box
-                component="main"
-                sx={styles.layoutBox}>
-                {children}
-              </Box>
-
-            </ThemeRegistry>
-          </ProductProvider>
+              </ThemeRegistry>
+            </ProductProvider>
+          </ModalProvider>
         </LoadingProvider>
       </body>
     </html>

@@ -4,10 +4,10 @@ import { productColumns } from '@/libs/tableColumns';
 import MasterContainer from '@/components/MasterContainer';
 import OptionPanel from './OptionPanel';
 import TableList from './TableList';
-
+import Form from './Form';
 export default function Page() {
 
-    let name = "Product";
+    let name = "PRODUCT";
 
     return (
 
@@ -16,6 +16,8 @@ export default function Page() {
             <Stack spacing={2} direction="column">
 
                 <OptionPanel />
+
+                <Form />
 
                 <TableList columns={productColumns} />
 

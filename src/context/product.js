@@ -10,6 +10,7 @@ export const ProductProvider = (props) => {
 
     const [product, setProduct] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
+    const [selectedToEdit, setSelectedToEdit] = useState(null);
 
     useEffect(() => {
 
@@ -31,7 +32,10 @@ export const ProductProvider = (props) => {
             product,
             setProduct,
             selectedProducts,
-            setSelectedProducts
+            setSelectedProducts,
+            selectedToEdit,
+            setSelectedToEdit
+
         }} {...props} />
 
     )

@@ -40,7 +40,6 @@ export default function DrawerList() {
                             <ListItemButton component="a" href="#customized-list">
 
                                 <ListItemText
-
                                     primary="POINT OF SALE"
                                     primaryTypographyProps={styles.drawerTitle}
                                 />

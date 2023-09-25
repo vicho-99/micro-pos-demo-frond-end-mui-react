@@ -7,6 +7,8 @@ import Stack from '@mui/material/Stack';
 import ReListButton from '@/components/ReListButton';
 import { useProduct } from '@/hooks/useProduct';
 import RemoveButton from '@/components/RemoveButton';
+import useModal from "@/hooks/useModal"
+import AddButton from '@/components/AddButton';
 
 export default function OptionPanel() {
 
@@ -15,6 +17,8 @@ export default function OptionPanel() {
         removeProducts,
         hasSelected
     } = useProduct();
+
+    const { showModal } = useModal();
 
     return (
 
@@ -36,11 +40,7 @@ export default function OptionPanel() {
                     reList={reListProducts}
                 />
 
-                <Button
-                    variant="contained"
-                    endIcon={<AddIcon />}>
-                    ADD
-                </Button>
+                <AddButton showModal={showModal} />
 
             </Stack>
 

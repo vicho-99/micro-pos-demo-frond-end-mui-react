@@ -1,10 +1,10 @@
 export const drawerStyles = {
     drawerMain:
     {
-        width: 252,
+        width: 235,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
-            width: 252,
+            width: 235,
             backgroundColor: 'white',
             boxSizing: 'border-box',
             height: 'auto',
@@ -12,7 +12,7 @@ export const drawerStyles = {
         },
     },
     drawerPaper: {
-        width: 252,
+        width: 235,
         borderRadius: 0
     },
     fireNav: {
@@ -33,7 +33,7 @@ export const drawerStyles = {
         height: '100%'
     },
     drawer: {
-        width: 252,
+        width: 235,
         borderRadius: 0
     },
     drawerTheme:

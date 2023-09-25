@@ -14,21 +14,21 @@ export default function MasterContainer({
 
             <Grid container direction="row" gap={2} >
 
-                <Grid lg={12}  >
+                <Grid item lg={12}   >
 
-                    <Typography variant="h6">
+                    <Typography style={{ fontWeight: 700 }} variant="h6">
                         {name}
                     </Typography>
 
                 </Grid>
 
-                <Grid lg={12}  >
+                <Grid item lg={12}  >
 
                     <Divider />
 
                 </Grid>
 
-                <Grid sm={12} lg={12}>
+                <Grid item sm={12} lg={12}>
 
                     {children}
 

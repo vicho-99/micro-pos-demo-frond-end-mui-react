@@ -1,10 +1,11 @@
 export const layoutStyles = {
     layoutBox: {
-        flexGrow: 1,
+        
+        display: 'flex',
         bgcolor: 'background.default',
-        ml: `252px`,
-    /*     mt: ['48px', '56px', '64px'], */
-        p: 3,
+        height: '100%',
+        ml: `235px`,
+        p: 1.5,
     }
 
 }

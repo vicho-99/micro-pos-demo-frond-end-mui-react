@@ -1,7 +1,9 @@
 import { ProductContext } from '@/context/product'
-import { deleteProduct, getProducts } from '@/services/product';
+import { deleteProduct, getProducts, saveProduct, updateProduct } from '@/services/product';
 import { toast } from 'sonner'
 import useLoading from '@/hooks/useLoading';
+import { validateProduct } from '@/validations/user';
+import { mappedCreateProduct, mappedUpdateProduct } from '@/mapped/product';
 
 export function useProduct() {
 
@@ -10,6 +12,8 @@ export function useProduct() {
         setProduct,
         selectedProducts,
         setSelectedProducts,
+        selectedToEdit,
+        setSelectedToEdit
     } = ProductContext()
 
     const { hideLoading, showLoading } = useLoading();
@@ -47,12 +51,34 @@ export function useProduct() {
 
         await reListProducts();
         hideLoading();
-        toast.success("process completed successfully!")
+        toast.success("Process completed successfully!")
 
+    }
 
+    async function createProduct({ form }) {
+        try {
+            await validateProduct({ form });
+            const response = await saveProduct({ form: mappedCreateProduct({ form }) });
+            await reListProducts();
+            toast.success(response.message)
+            return true;
+        } catch (error) {
+            toast.error("Error -  create product - " + error.toString());
+            return false;
+        }
+    }
 
-
-
+    async function modifyProducrt({ form }) {
+        try {
+            await validateProduct({ form });
+            const response = await updateProduct({ form: mappedUpdateProduct({ form }) });
+            await reListProducts();
+            toast.success(response.message)
+            return true;
+        } catch (error) {
+            toast.error("Error - modify product - " + error.toString());
+            return false;
+        }
     }
 
     let hasSelected = selectedProducts.length;
@@ -63,7 +89,11 @@ export function useProduct() {
         selectedProducts,
         setSelectedProducts,
         removeProducts,
-        hasSelected
+        hasSelected,
+        createProduct,
+        selectedToEdit,
+        setSelectedToEdit,
+        modifyProducrt
     }
 }
 
