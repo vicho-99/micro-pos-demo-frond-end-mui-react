@@ -10,3 +10,35 @@ export async function getCategorys({ }) {
         throw new Error(error);
     }
 }
+
+
+export async function updateCategory({ form }) {
+    try {
+        const { data } = await axios.put(URL, form);
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+
+export async function saveCategory({ form }) {
+    try {
+        const { data } = await axios.post(URL, form);
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+export async function deleteCategory({
+    id
+}) {
+    try {
+        const { data } = await axios.delete(URL + id);
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+

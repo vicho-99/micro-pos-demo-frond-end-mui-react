@@ -8,6 +8,7 @@ import Loading from '@/components/Loading'
 import { LoadingProvider } from '@/context/loading';
 import { ModalProvider } from '@/context/modal';
 import { CartProvider } from '@/context/cart';
+import { CategoryProvider } from '@/context/category';
 
 export const metadata = {
   title: 'Point of sale ',
@@ -20,22 +21,25 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true} style={{ height: '100%' }} >
         <Toaster richColors />
         <CartProvider>
-          <LoadingProvider>
-            <ModalProvider>
-              <ProductProvider>
-                <ThemeRegistry>
-                  <Loading />
-                  <Drawer />
-                  <Box
-                    component="main"
-                    sx={styles.layoutBox}>
-                    {children}
-                  </Box>
+          <CategoryProvider>
+            <LoadingProvider>
+              <ModalProvider>
 
-                </ThemeRegistry>
-              </ProductProvider>
-            </ModalProvider>
-          </LoadingProvider>
+                <ProductProvider>
+                  <ThemeRegistry>
+                    <Loading />
+                    <Drawer />
+                    <Box
+                      component="main"
+                      sx={styles.layoutBox}>
+                      {children}
+                    </Box>
+
+                  </ThemeRegistry>
+                </ProductProvider>
+              </ModalProvider>
+            </LoadingProvider>
+          </CategoryProvider>
         </CartProvider>
       </body>
     </html>

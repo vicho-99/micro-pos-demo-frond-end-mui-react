@@ -51,7 +51,7 @@ export default function ProductList() {
 
                             <CardMedia
                                 component="img"
-                                sx={{ height: '100%' }}
+                                sx={{ height: '100%', p: 2.5 }}
                                 image={e.photoUrl}
                                 alt="green iguana"
                             />

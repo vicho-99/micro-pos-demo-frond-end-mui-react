@@ -5,6 +5,7 @@ import RequestPageIcon from '@mui/icons-material/RequestPage';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import BentoIcon from '@mui/icons-material/Bento';
 import { menuItemsStyles as styles } from '@/styles/menuItemsStyles';
 import Link from 'next/link';
 
@@ -13,6 +14,7 @@ import Link from 'next/link';
 const data = [
     { icon: <PointOfSaleIcon />, label: 'Point of sale', href: '/pos' },
     { icon: <Inventory2Icon />, label: 'Product', href: '/product' },
+    { icon: <BentoIcon />, label: 'Category', href: '/category' },
     { icon: <RequestPageIcon />, label: 'Order', href: '/order' },
     { icon: <AssessmentIcon />, label: 'Report', href: '/report' },
 ];

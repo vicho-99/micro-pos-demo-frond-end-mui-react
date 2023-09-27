@@ -1,6 +1,8 @@
 'use client'
 
 import EditButton from "@/components/EditButton";
+import useCategory from "@/hooks/useCategory";
+import { useProduct } from "@/hooks/useProduct";
 
 
 export const productColumns = [
@@ -55,7 +57,47 @@ export const productColumns = [
         field: 'actions',
         type: 'actions',
         renderCell: (params) => {
-            return <EditButton id={params.id} />
+            const { setSelectedProducts } = useProduct();
+            return <EditButton id={params.id} setSelectedProducts={setSelectedProducts} />
+
+        }
+    },
+];
+
+export const categoryColumns = [
+
+    {
+        field: 'categoryId',
+        headerName: 'ID',
+        width: 50
+    },
+
+    {
+        field: 'created',
+        headerName: 'Created at',
+        width: 175,
+    },
+    {
+        field: 'name',
+        headerName: 'Name',
+        flex: 1
+    },
+    {
+        field: 'isActive',
+        type: 'boolean',
+        headerName: 'isActive',
+    },
+    {
+
+        filterable: false,
+        width: 50,
+        field: 'actions',
+        type: 'actions',
+        renderCell: (params) => {
+
+            const { setSelectedToEdit } = useCategory();
+
+            return <EditButton id={params.id} setSelectedToEdit={setSelectedToEdit} />
 
         }
     },

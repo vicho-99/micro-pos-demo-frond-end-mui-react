@@ -21,7 +21,7 @@ export default function DataTable({
                         onRowSelectionModelChange={(dataSelected) => setSelected(dataSelected)}
                         rowSelectionModel={selected}
                         rows={data}
-                        getRowId={(row) => row?.['productId']}
+                        getRowId={(row) => row?.[rowId]}
                         columns={columns}
                         disableSelectionOnClick={false}
                         checkboxSelection

@@ -6,10 +6,11 @@ import { useProduct } from "@/hooks/useProduct";
 import useModal from "@/hooks/useModal";
 
 export default function EditButton({
-    id
+    id,
+    setSelectedToEdit
 }) {
 
-    const { setSelectedToEdit } = useProduct();
+
     const { showModal } = useModal()
 
     return (
