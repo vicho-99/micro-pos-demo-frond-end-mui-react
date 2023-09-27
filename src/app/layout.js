@@ -7,6 +7,7 @@ import { Toaster } from 'sonner'
 import Loading from '@/components/Loading'
 import { LoadingProvider } from '@/context/loading';
 import { ModalProvider } from '@/context/modal';
+import { CartProvider } from '@/context/cart';
 
 export const metadata = {
   title: 'Point of sale ',
@@ -16,24 +17,26 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" style={{ height: '100%' }} >
-      <body style={{ height: '100%' }} >
+      <body suppressHydrationWarning={true} style={{ height: '100%' }} >
         <Toaster richColors />
-        <LoadingProvider>
-          <ModalProvider>
-            <ProductProvider>
-              <ThemeRegistry>
-                <Loading />
-                <Drawer />
-                <Box
-                  component="main"
-                  sx={styles.layoutBox}>
-                  {children}
-                </Box>
+        <CartProvider>
+          <LoadingProvider>
+            <ModalProvider>
+              <ProductProvider>
+                <ThemeRegistry>
+                  <Loading />
+                  <Drawer />
+                  <Box
+                    component="main"
+                    sx={styles.layoutBox}>
+                    {children}
+                  </Box>
 
-              </ThemeRegistry>
-            </ProductProvider>
-          </ModalProvider>
-        </LoadingProvider>
+                </ThemeRegistry>
+              </ProductProvider>
+            </ModalProvider>
+          </LoadingProvider>
+        </CartProvider>
       </body>
     </html>
   );

@@ -14,6 +14,7 @@ export default function EditButton({
 
     return (
         <IconButton
+            key={id}
             onClick={() => {
                 setSelectedToEdit(id)
                 showModal()

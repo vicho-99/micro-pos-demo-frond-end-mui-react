@@ -8,6 +8,9 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { onChangeCheck, onChangeNumberField, onChangeTextField } from "@/libs/onChange"
 import { useProduct } from "@/hooks/useProduct"
+import useCategory from "@/hooks/useCategory"
+import InputAutoComplete from "@/components/InputAutoComplete"
+
 
 let formProps = {
     productId: null,
@@ -17,7 +20,9 @@ let formProps = {
     stock: "",
     price: "",
     photoUrl: "",
-    isActive: true
+    isActive: true,
+    categoryId: null,
+    lectureCode: "",
 }
 
 let variant = "outlined";
@@ -26,6 +31,8 @@ let size = "small"
 export default function Form() {
 
     const [form, setForm] = useState({});
+
+    const { category } = useCategory()
 
     const {
         hideModal,
@@ -49,12 +56,12 @@ export default function Form() {
     }
 
     useEffect(() => {
-      
         if (selectedToEdit)
             setForm(product.find(e => e.productId == selectedToEdit))
         else
             setForm(formProps)
     }, [selectedToEdit])
+
 
     return (
 
@@ -117,6 +124,31 @@ export default function Form() {
                     />
                 </Grid>
 
+                <Grid item lg={6} >
+                    <TextField
+                        type="text"
+                        label="Lecture code"
+                        variant={variant}
+                        fullWidth
+                        size={size}
+                        name="lectureCode"
+                        value={form.lectureCode}
+                        onChange={(event) => onChangeTextField({ event, form, setForm })}
+                    />
+                </Grid>
+
+                <Grid item lg={6} >
+
+                    <InputAutoComplete
+
+                        data={category}
+                        form={form}
+                        setForm={setForm}
+                        nameOfKeyDescription={"name"}
+                        keyName={"categoryId"}
+                        label="Category"
+                    />
+                </Grid>
 
                 <Grid item lg={12} >
                     <TextField
@@ -136,7 +168,7 @@ export default function Form() {
 
                 <Grid item lg={12} textAlign={"right"} >
                     <FormControlLabel
-                        control={<Checkbox defaultChecked />}
+                        control={<Checkbox />}
                         label="Is Active"
                         name="isActive"
                         onChange={(event) => onChangeCheck({ event, form, setForm })}

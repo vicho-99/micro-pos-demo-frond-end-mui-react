@@ -15,22 +15,25 @@ export default function DataTable({
 
             <div style={style}>
 
-                <DataGrid
-                    density='comfortable'
-                    onRowSelectionModelChange={(dataSelected) => setSelected(dataSelected)}
-                    rowSelectionModel={selected}
-                    rows={data}
-                    getRowId={(row) => row?.[rowId]}
-                    columns={columns}
-                    disableSelectionOnClick={false}
-                    checkboxSelection
-                    disableRowSelectionOnClick
-                />
+                {data &&
+                    <DataGrid
+                        density='comfortable'
+                        onRowSelectionModelChange={(dataSelected) => setSelected(dataSelected)}
+                        rowSelectionModel={selected}
+                        rows={data}
+                        getRowId={(row) => row?.['productId']}
+                        columns={columns}
+                        disableSelectionOnClick={false}
+                        checkboxSelection
+                        disableRowSelectionOnClick
+                    />
+                }
+
 
             </div>
 
         </Paper>
-        
+
     );
 }
 

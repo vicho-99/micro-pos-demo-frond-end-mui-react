@@ -13,6 +13,20 @@ export const onChangeTextField = ({
 
 }
 
+export const onChangeAutocomplete = ({
+    value,
+    name,
+    form,
+    setForm
+}) => {
+
+    setForm({
+        ...form,
+        [name]: value
+    })
+
+}
+
 export const onChangeNumberField = ({
     event,
     form,

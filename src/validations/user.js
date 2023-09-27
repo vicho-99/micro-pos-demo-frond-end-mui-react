@@ -6,6 +6,17 @@ export const validateProduct = async ({ form }) => {
         throw new Error("The 'name' field cannot be more than 255 characters.");
     }
 
+    if (!form.lectureCode) {
+        throw new Error("The 'lecture Code' field is required.");
+    } else if (form.lectureCode.length > 255) {
+        throw new Error("The 'name' field cannot be more than 255 characters.");
+    }
+
+    if (!form.categoryId) {
+        throw new Error("The 'Category' field is required.");
+    } else if (typeof form.categoryId !== "number") {
+        throw new Error("The 'category' field must be a number.");
+    }
 
     if (!form.description) {
         throw new Error("The 'description' field is required.");

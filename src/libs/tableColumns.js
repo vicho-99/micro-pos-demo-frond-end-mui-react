@@ -2,6 +2,7 @@
 
 import EditButton from "@/components/EditButton";
 
+
 export const productColumns = [
 
     {
@@ -51,12 +52,11 @@ export const productColumns = [
 
         filterable: false,
         width: 50,
+        field: 'actions',
         type: 'actions',
-     
         renderCell: (params) => {
-
-
             return <EditButton id={params.id} />
+
         }
     },
 ];
