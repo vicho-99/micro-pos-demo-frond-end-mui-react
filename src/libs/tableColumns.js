@@ -57,8 +57,8 @@ export const productColumns = [
         field: 'actions',
         type: 'actions',
         renderCell: (params) => {
-            const { setSelectedProducts } = useProduct();
-            return <EditButton id={params.id} setSelectedProducts={setSelectedProducts} />
+            const { setSelectedToEdit } = useProduct();
+            return <EditButton id={params.id} setSelectedToEdit={setSelectedToEdit} />
 
         }
     },
@@ -101,4 +101,55 @@ export const categoryColumns = [
 
         }
     },
+];
+
+
+export const orderColumns = [
+
+    {
+        field: 'orderId',
+        headerName: 'ID',
+        width: 85
+    },
+
+    {
+        field: 'created',
+        headerName: 'Created at',
+        width: 175,
+    },
+    {
+        field: 'paymentMethod',
+        headerName: 'Payment Method',
+        width: 175,
+        flex: 1,
+    },
+    {
+        field: 'totalAmount',
+        type: 'number',
+        headerName: 'Total',
+        width: 175,
+
+    },
+    {
+        field: 'totalItem',
+        type: 'number',
+        headerName: 'Lines',
+        width: 175,
+    },
+    /*
+    {
+
+        filterable: false,
+        width: 50,
+        field: 'actions',
+        type: 'actions',
+           renderCell: (params) => {
+  
+              const { setSelectedToEdit } = useCategory();
+  
+              return <EditButton id={params.id} setSelectedToEdit={setSelectedToEdit} />
+  
+          }
+    },
+ */
 ];

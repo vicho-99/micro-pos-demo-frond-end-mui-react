@@ -1,4 +1,6 @@
-export const validateProduct = async ({ form }) => {
+export const validateProduct = async ({ form, product }) => {
+
+
 
     if (!form.name) {
         throw new Error("The 'name' field is required.");
@@ -45,6 +47,15 @@ export const validateProduct = async ({ form }) => {
         throw new Error("The 'photoUrl' field is required.");
     } else if (form.photoUrl.length > 255) {
         throw new Error("The 'photoUrl' field cannot be more than 255 characters.");
+    }
+
+    if (!form.productId) {
+        if (product.filter(e => e.lectureCode === form.lectureCode).length)
+            throw new Error("The 'lecture Code' it is already registered");
+    }
+    else {
+        if (product.filter(e => e.lectureCode === form.lectureCode && e.productId !== form.productId).length)
+            throw new Error("The 'lecture Code' it is already registered");
     }
 
 }

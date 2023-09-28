@@ -53,7 +53,7 @@ export default function ProductList() {
                                 component="img"
                                 sx={{ height: '100%', p: 2.5 }}
                                 image={e.photoUrl}
-                                alt="green iguana"
+                                alt={e.name}
                             />
 
                             <CardContent sx={{ p: 1 }} >

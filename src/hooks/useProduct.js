@@ -57,7 +57,7 @@ export function useProduct() {
 
     async function createProduct({ form }) {
         try {
-            await validateProduct({ form });
+            await validateProduct({ form, product });
             const response = await saveProduct({ form: mappedCreateProduct({ form }) });
             await reListProducts();
             toast.success(response.message)
@@ -68,9 +68,9 @@ export function useProduct() {
         }
     }
 
-    async function modifyProducrt({ form }) {
+    async function modifyProduct({ form }) {
         try {
-            await validateProduct({ form });
+            await validateProduct({ form, product });
             const response = await updateProduct({ form: mappedUpdateProduct({ form }) });
             await reListProducts();
             toast.success(response.message)
@@ -93,7 +93,7 @@ export function useProduct() {
         createProduct,
         selectedToEdit,
         setSelectedToEdit,
-        modifyProducrt
+        modifyProduct
     }
 }
 

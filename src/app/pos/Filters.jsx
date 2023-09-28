@@ -2,6 +2,7 @@ import SelectedFilter from "@/components/SelectedFilter";
 /* import TextFieldFilter from "@/components/TextFieldFilter"; */
 import { Stack } from "@mui/material";
 import { useState } from "react";
+import SearchByLectureCode from "@/components/SearchByLectureCode";
 
 export default function Filters({
     product,
@@ -10,7 +11,9 @@ export default function Filters({
 }) {
 
     const [categorySelected, setCategorySelected] = useState("ALL");
- 
+
+
+
     return (
 
         <Stack direction={"row"} spacing={2}  >
@@ -26,14 +29,7 @@ export default function Filters({
                 setDataFilter={setFilteredProducts}
             />
 
-           {/*  <TextFieldFilter
-
-                categorySelected={categorySelected}
-                setCategorySelected={setCategorySelected}
-                data={product}
-                keyFilter={"name"}
-                setDataFilter={setFilteredProducts}
-            /> */}
+            <SearchByLectureCode />
 
         </Stack>
     )

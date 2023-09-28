@@ -27,7 +27,7 @@ export default function OrderResumen() {
                 <Grid item lg={12} >
 
                     <Typography variant="h6" gutterBottom>
-                        Current Order
+                        CURRENT ORDER
                     </Typography>
 
                     <Divider />

@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import useCart from '@/hooks/useCart';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EmplyCart from '@/components/EmplyCart';
 
 export default function ProductOrderList({
     products
@@ -18,7 +19,7 @@ export default function ProductOrderList({
 
             <nav aria-label="main mailbox folders">
                 <List dense sx={{ p: 0.8 }}  >
-                    {products.map(product => (
+                    {products.length ? products.map(product => (
 
                         <ListItem key={product.productId} disablePadding
                             secondaryAction={
@@ -40,7 +41,9 @@ export default function ProductOrderList({
                             } />
 
                         </ListItem>
-                    ))}
+                    )) :
+                        <EmplyCart />
+                    }
 
 
                 </List>

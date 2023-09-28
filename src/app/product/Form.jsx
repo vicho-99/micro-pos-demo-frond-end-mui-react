@@ -43,12 +43,12 @@ export default function Form() {
         createProduct,
         selectedToEdit,
         product,
-        modifyProducrt
+        modifyProduct
     } = useProduct();
 
     async function submit() {
         if (selectedToEdit)
-            await modifyProducrt({ form })
+            await modifyProduct({ form })
         else {
             let isSave = await createProduct({ form })
             if (isSave) setForm(formProps)

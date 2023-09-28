@@ -1,16 +1,20 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import { Stack } from '@mui/material';
+import MasterContainer from '@/components/MasterContainer';
+import AppComponentCardList from '@/components/AppComponentCardList';
 
 export default function HomePage() {
 
   return (
 
-    <Box sx={{ display: 'flex' }}>
 
-      <div>
 
-      </div>
+    <MasterContainer name={"MODULES AND FUNCTIONALITIES"} >
 
-    </Box>
+
+      <AppComponentCardList />
+
+    </MasterContainer >
+
+
   );
 }

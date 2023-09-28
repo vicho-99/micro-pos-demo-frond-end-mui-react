@@ -24,7 +24,7 @@ export default function DataTable({
                         getRowId={(row) => row?.[rowId]}
                         columns={columns}
                         disableSelectionOnClick={false}
-                        checkboxSelection
+                        checkboxSelection={setSelected !== null}
                         disableRowSelectionOnClick
                     />
                 }

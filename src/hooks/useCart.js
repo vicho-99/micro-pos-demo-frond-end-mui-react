@@ -1,4 +1,6 @@
 import { CartContext } from "@/context/cart";
+import { toast } from "sonner";
+import { useProduct } from "./useProduct";
 
 
 export default function useCart() {
@@ -7,6 +9,10 @@ export default function useCart() {
         cart,
         setCart
     } = CartContext()
+
+    const {
+        product
+    } = useProduct();
 
     const totalItem = cart.length;
 
@@ -58,6 +64,24 @@ export default function useCart() {
 
     }
 
+    function searchLectureCode({
+        value
+    }) {
+
+        const productSearch = product.find(e => e.lectureCode === value);
+
+        if (!productSearch) {
+            toast.error("product not found ")
+
+            return false;
+        }
+
+        addProductToCart({ newProduct: productSearch })
+
+        return true;
+
+    }
+
     function calculateCartTotals() {
 
 
@@ -83,7 +107,8 @@ export default function useCart() {
         removeProductFromCart,
         totalItem,
         updateCartItemQuantity,
-        calculateCartTotals
+        calculateCartTotals,
+        searchLectureCode
     }
 
 }

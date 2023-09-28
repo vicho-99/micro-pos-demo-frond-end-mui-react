@@ -15,6 +15,7 @@ import MenuItems from '@/components/MenuItems';
 
 import { drawerStyles as styles } from '@/styles/drawerStyles';
 import { Drawer } from '@mui/material';
+import Link from 'next/link';
 
 
 
@@ -32,7 +33,7 @@ export default function DrawerList() {
             <Box sx={styles.drawerBox}>
 
                 <ThemeProvider theme={createTheme(styles.drawerTheme)}>
-                    
+
                     <Paper elevation={0} sx={styles.drawerPaper}>
 
                         <FireNav component="nav" disablePadding>
@@ -50,19 +51,20 @@ export default function DrawerList() {
 
                             <ListItem component="div" disablePadding>
 
-                                <ListItemButton sx={{ height: 56 }}>
+                                <Link href="/" style={{ width: '100%', textDecoration: 'none' }} >
+                                    <ListItemButton sx={{ height: 56 }}>
 
-                                    <ListItemIcon>
-                                        <Home color="primary" />
-                                    </ListItemIcon>
+                                        <ListItemIcon>
+                                            <Home color="primary" />
+                                        </ListItemIcon>
 
-                                    <ListItemText
-                                        primary="DASHBOARD"
-                                        primaryTypographyProps={styles.drawerListItemTitle}
-                                    />
+                                        <ListItemText
+                                            primary="DASHBOARD"
+                                            primaryTypographyProps={styles.drawerListItemTitle}
+                                        />
 
-                                </ListItemButton>
-
+                                    </ListItemButton>
+                                </Link>
                             </ListItem>
                             <Divider />
                             <Box
