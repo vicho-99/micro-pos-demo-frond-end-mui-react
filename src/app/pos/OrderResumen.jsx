@@ -3,14 +3,19 @@
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { Button, Divider } from '@mui/material';
-import Stack from '@mui/material/Stack';
+import { Divider, } from '@mui/material';
 import useCart from '@/hooks/useCart';
 import ProductOrderList from './ProductOrderList';
+import Form from './Form';
 
 export default function OrderResumen() {
 
-    const { cart, calculateCartTotals } = useCart();
+    const {
+        cart,
+
+    } = useCart();
+
+
 
     return (
 
@@ -27,7 +32,7 @@ export default function OrderResumen() {
                 <Grid item lg={12} >
 
                     <Typography variant="h6" gutterBottom>
-                        CURRENT ORDER
+                        Resumen Order
                     </Typography>
 
                     <Divider />
@@ -37,15 +42,9 @@ export default function OrderResumen() {
                 </Grid>
 
 
-                <Grid container justifyContent={"end"} direction={"column"} item lg={12}  >
+                <Form />
 
-                    <Stack spacing={2} direction="column" >
 
-                        <Button color="primary" size='large' variant="contained"> PAY    {calculateCartTotals().finalTotal.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} </Button>
-
-                    </Stack>
-
-                </Grid>
 
             </Grid>
 

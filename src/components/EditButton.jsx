@@ -2,7 +2,7 @@
 
 import IconButton from "@mui/material/IconButton";
 import EditIcon from '@mui/icons-material/Edit';
-import { useProduct } from "@/hooks/useProduct";
+
 import useModal from "@/hooks/useModal";
 
 export default function EditButton({

@@ -11,22 +11,30 @@ export default function useCart() {
     } = CartContext()
 
     const {
-        product
+        product,
+        hasStock
     } = useProduct();
 
-    const totalItem = cart.length;
 
-    function addProductToCart({
+    async function addProductToCart({
         newProduct
     }) {
 
+
+        if (!await hasStock({ productId: newProduct.productId })) {
+            toast.error("Item no stock")
+            return false;
+        }
+
         const productIndex = cart.findIndex((item) => item.productId === newProduct.productId);
+
 
         if (productIndex !== -1) {
 
             const updatedCart = [...cart];
             updatedCart[productIndex].qty += 1;
             setCart(updatedCart);
+
         } else {
 
             newProduct.qty = 1;
@@ -53,6 +61,11 @@ export default function useCart() {
         if (productIndex !== -1) {
 
             const productStock = cart[productIndex].stock;
+
+            if (productStock === 0) {
+                toast.error("Item no stock")
+                return false;
+            }
 
             if (newQuantity >= 1 && newQuantity <= productStock) {
                 const updatedCart = [...cart];
@@ -100,15 +113,38 @@ export default function useCart() {
         return { finalTotal };
     }
 
+    const hasItems = cart.length;
+    const totalLines = cart.length;
+
+    const totalItems = () => {
+
+        let result = 0;
+
+        for (let index = 0; index < cart.length; index++) {
+
+            const item = cart[index];
+
+            result = result + item.qty;
+
+        }
+
+        return result;
+
+    }
+
+    const clearCart = () => setCart([]);
 
     return {
+        hasItems,
         cart,
         addProductToCart,
         removeProductFromCart,
-        totalItem,
+        totalItems,
+        totalLines,
         updateCartItemQuantity,
         calculateCartTotals,
-        searchLectureCode
+        searchLectureCode,
+        clearCart
     }
 
 }

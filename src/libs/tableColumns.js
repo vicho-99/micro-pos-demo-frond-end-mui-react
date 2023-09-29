@@ -3,8 +3,8 @@
 import EditButton from "@/components/EditButton";
 import useCategory from "@/hooks/useCategory";
 import { useProduct } from "@/hooks/useProduct";
-
-
+import Chip from '@mui/material/Chip';
+import TooltipOrderDetail from "@/components/TooltipOrderDetail";
 export const productColumns = [
 
     {
@@ -122,34 +122,34 @@ export const orderColumns = [
         headerName: 'Payment Method',
         width: 175,
         flex: 1,
+        renderCell: (params) => {
+            return <Chip label={params.value} variant="outlined" size="small" />
+        }
     },
     {
         field: 'totalAmount',
         type: 'number',
         headerName: 'Total',
         width: 175,
+        renderCell: (params) => {
+
+            return <Chip label={params.value.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} color="success" size="small" variant="outlined" />
+
+
+        }
 
     },
-    {
-        field: 'totalItem',
-        type: 'number',
-        headerName: 'Lines',
-        width: 175,
-    },
-    /*
     {
 
         filterable: false,
-        width: 50,
+        width: 120,
         field: 'actions',
         type: 'actions',
-           renderCell: (params) => {
-  
-              const { setSelectedToEdit } = useCategory();
-  
-              return <EditButton id={params.id} setSelectedToEdit={setSelectedToEdit} />
-  
-          }
+        renderCell: (params) => {
+
+            return <TooltipOrderDetail items={params.row.items} />
+
+        }
     },
- */
+
 ];

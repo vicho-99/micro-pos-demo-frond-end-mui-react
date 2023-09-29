@@ -38,7 +38,7 @@ export default function DrawerList() {
 
                         <FireNav component="nav" disablePadding>
 
-                            <ListItemButton component="a" href="#customized-list">
+                            <ListItemButton component="a">
 
                                 <ListItemText
                                     primary="POINT OF SALE"

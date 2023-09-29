@@ -18,13 +18,13 @@ export default function ProductOrderList({
         <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
 
             <nav aria-label="main mailbox folders">
-                <List dense sx={{ p: 0.8 }}  >
+                <List dense   >
                     {products.length ? products.map(product => (
 
-                        <ListItem key={product.productId} disablePadding
+                        <ListItem key={product.productId} 
                             secondaryAction={
-                                <IconButton onClick={() => removeProductFromCart({ productId: product.productId })} edge="end" aria-label="comments">
-                                    <DeleteOutlineIcon />
+                                <IconButton color='error' onClick={() => removeProductFromCart({ productId: product.productId })} edge="end" aria-label="comments">
+                                    <DeleteOutlineIcon fontSize='small' />
                                 </IconButton>
                             }>
 
@@ -36,7 +36,7 @@ export default function ProductOrderList({
 
                             />
 
-                            <ListItemText sx={{ pl: 2 }} primary={product.name} secondary={
+                            <ListItemText sx={{ pl: 1.2 }} primary={product.name} secondary={
                                 product.price.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })
                             } />
 
@@ -55,7 +55,7 @@ export default function ProductOrderList({
 
 const style = {
     inputQty: {
-        width: '60px',
+        width: '55px',
         padding: '6px',
         border: '1px solid #ccc',
         borderRadius: '4px',

@@ -18,6 +18,15 @@ export function useProduct() {
 
     const { hideLoading, showLoading } = useLoading();
 
+    async function hasStock({ productId }) {
+
+        let prod = product.find(e => e.productId === productId);
+
+
+        return parseInt(prod.stock) >= 1
+
+    }
+
     async function reListProducts() {
 
         try {
@@ -84,6 +93,7 @@ export function useProduct() {
     let hasSelected = selectedProducts.length;
 
     return {
+        hasStock,
         product,
         reListProducts,
         selectedProducts,
